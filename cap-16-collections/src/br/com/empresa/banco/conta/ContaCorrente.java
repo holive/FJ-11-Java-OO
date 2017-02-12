@@ -23,6 +23,7 @@ public class ContaCorrente extends Conta implements Tributavel {
 	}
 
 	@Override
+	protected
 	void deposita() {
 		// TODO Auto-generated method stub
 	}

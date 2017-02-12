@@ -14,6 +14,7 @@ public class ContaPoupanca extends Conta implements Tributavel, Comparable<Conta
 	}
 
 	@Override
+	protected
 	void deposita() {
 		// TODO Auto-generated method stub
 		

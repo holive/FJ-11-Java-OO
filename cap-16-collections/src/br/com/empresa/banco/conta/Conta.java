@@ -1,5 +1,8 @@
 package br.com.empresa.banco.conta;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Conta {
 	protected double saldo;
 	protected int numero;
@@ -9,9 +12,9 @@ public abstract class Conta {
 		this.saldo = saldo;
 	}
 	
-	abstract void deposita();
+	protected abstract void deposita();
 	
-	void deposita(double valor) {
+	public void deposita(double valor) {
 		this.saldo += valor;
 	}
 
@@ -46,10 +49,25 @@ public abstract class Conta {
 	}
 	
 	@Override
-	public boolean equals(Object obj) {
-		Conta outraConta = (Conta) obj;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + numero;
+		return result;
+	}
 
-		return this.numero == outraConta.numero && this.nome == outraConta.nome;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		if (numero != other.numero)
+			return false;
+		return true;
 	}
 	
 	public void imprimeNome() {
@@ -57,4 +75,6 @@ public abstract class Conta {
 			System.out.println(this.nome.charAt(i));
 		}
 	}
+	
+	
 }
